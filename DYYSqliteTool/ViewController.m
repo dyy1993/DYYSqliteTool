@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "DYYSqliteTool.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +17,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)createTab:(id)sender {
+    NSString *sql = @"create table if not exists t_stu(id integer primary key autoincrement, name text not null, age integer, score real)";
+    BOOL result = [DYYSqliteTool deal:sql withUid:nil];
+    if (result) {
+        NSLog(@"操作成功");
+    }else
+        NSLog(@"操作失败");
+}
+- (IBAction)query:(id)sender {
+    NSString *sql = @"select * from t_stu";
+    NSMutableArray *resut = [DYYSqliteTool query:sql withUid:nil];
+    
+    NSLog(@"%@",resut);
 }
 
 

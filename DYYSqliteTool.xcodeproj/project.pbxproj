@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F27FA281F1897AE00359321 /* DYYSqliteToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27FA271F1897AE00359321 /* DYYSqliteToolTests.m */; };
+		2F27FA301F1897DF00359321 /* DYYSqliteToolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27FA2F1F1897DF00359321 /* DYYSqliteToolTest.m */; };
+		2F27FA331F18A4E400359321 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F27FA321F18A4E400359321 /* libsqlite3.0.tbd */; };
+		2F27FA351F18A4FC00359321 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F27FA341F18A4FC00359321 /* libsqlite3.tbd */; };
+		2F27FA361F18A52B00359321 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F27FA321F18A4E400359321 /* libsqlite3.0.tbd */; };
 		2F659EDC1F176A3900B4FCE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EDB1F176A3900B4FCE2 /* main.m */; };
 		2F659EDF1F176A3900B4FCE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EDE1F176A3900B4FCE2 /* AppDelegate.m */; };
 		2F659EE21F176A3900B4FCE2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EE11F176A3900B4FCE2 /* ViewController.m */; };
@@ -14,9 +19,17 @@
 		2F659EE71F176A3900B4FCE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F659EE61F176A3900B4FCE2 /* Assets.xcassets */; };
 		2F659EEA1F176A3900B4FCE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F659EE81F176A3900B4FCE2 /* LaunchScreen.storyboard */; };
 		2F659EF51F176A3900B4FCE2 /* DYYSqliteToolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EF41F176A3900B4FCE2 /* DYYSqliteToolUITests.m */; };
+		2F659F021F176ACE00B4FCE2 /* DYYSqliteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659F011F176ACE00B4FCE2 /* DYYSqliteTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2F27FA2A1F1897AE00359321 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F659ECF1F176A3900B4FCE2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F659ED61F176A3900B4FCE2;
+			remoteInfo = DYYSqliteTool;
+		};
 		2F659EF11F176A3900B4FCE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2F659ECF1F176A3900B4FCE2 /* Project object */;
@@ -27,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F27FA251F1897AE00359321 /* DYYSqliteToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DYYSqliteToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F27FA271F1897AE00359321 /* DYYSqliteToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYYSqliteToolTests.m; sourceTree = "<group>"; };
+		2F27FA291F1897AE00359321 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F27FA2F1F1897DF00359321 /* DYYSqliteToolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYYSqliteToolTest.m; sourceTree = "<group>"; };
+		2F27FA321F18A4E400359321 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		2F27FA341F18A4FC00359321 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2F659ED71F176A3900B4FCE2 /* DYYSqliteTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DYYSqliteTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F659EDB1F176A3900B4FCE2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F659EDD1F176A3900B4FCE2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,13 +59,25 @@
 		2F659EF01F176A3900B4FCE2 /* DYYSqliteToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DYYSqliteToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F659EF41F176A3900B4FCE2 /* DYYSqliteToolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYYSqliteToolUITests.m; sourceTree = "<group>"; };
 		2F659EF61F176A3900B4FCE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F659F001F176ACE00B4FCE2 /* DYYSqliteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYYSqliteTool.h; sourceTree = "<group>"; };
+		2F659F011F176ACE00B4FCE2 /* DYYSqliteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYYSqliteTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2F27FA221F1897AE00359321 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F27FA351F18A4FC00359321 /* libsqlite3.tbd in Frameworks */,
+				2F27FA331F18A4E400359321 /* libsqlite3.0.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F659ED41F176A3900B4FCE2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F27FA361F18A52B00359321 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +91,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F27FA261F1897AE00359321 /* DYYSqliteToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				2F27FA271F1897AE00359321 /* DYYSqliteToolTests.m */,
+				2F27FA291F1897AE00359321 /* Info.plist */,
+				2F27FA2F1F1897DF00359321 /* DYYSqliteToolTest.m */,
+			);
+			path = DYYSqliteToolTests;
+			sourceTree = "<group>";
+		};
+		2F27FA311F18A4E300359321 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F27FA341F18A4FC00359321 /* libsqlite3.tbd */,
+				2F27FA321F18A4E400359321 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2F659ECE1F176A3900B4FCE2 = {
 			isa = PBXGroup;
 			children = (
 				2F659ED91F176A3900B4FCE2 /* DYYSqliteTool */,
 				2F659EF31F176A3900B4FCE2 /* DYYSqliteToolUITests */,
+				2F27FA261F1897AE00359321 /* DYYSqliteToolTests */,
 				2F659ED81F176A3900B4FCE2 /* Products */,
+				2F27FA311F18A4E300359321 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +126,7 @@
 			children = (
 				2F659ED71F176A3900B4FCE2 /* DYYSqliteTool.app */,
 				2F659EF01F176A3900B4FCE2 /* DYYSqliteToolUITests.xctest */,
+				2F27FA251F1897AE00359321 /* DYYSqliteToolTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +134,7 @@
 		2F659ED91F176A3900B4FCE2 /* DYYSqliteTool */ = {
 			isa = PBXGroup;
 			children = (
+				2F659EFF1F176AB500B4FCE2 /* DYYSqliteTool */,
 				2F659EDD1F176A3900B4FCE2 /* AppDelegate.h */,
 				2F659EDE1F176A3900B4FCE2 /* AppDelegate.m */,
 				2F659EE01F176A3900B4FCE2 /* ViewController.h */,
@@ -111,9 +165,36 @@
 			path = DYYSqliteToolUITests;
 			sourceTree = "<group>";
 		};
+		2F659EFF1F176AB500B4FCE2 /* DYYSqliteTool */ = {
+			isa = PBXGroup;
+			children = (
+				2F659F001F176ACE00B4FCE2 /* DYYSqliteTool.h */,
+				2F659F011F176ACE00B4FCE2 /* DYYSqliteTool.m */,
+			);
+			path = DYYSqliteTool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2F27FA241F1897AE00359321 /* DYYSqliteToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F27FA2E1F1897AE00359321 /* Build configuration list for PBXNativeTarget "DYYSqliteToolTests" */;
+			buildPhases = (
+				2F27FA211F1897AE00359321 /* Sources */,
+				2F27FA221F1897AE00359321 /* Frameworks */,
+				2F27FA231F1897AE00359321 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F27FA2B1F1897AE00359321 /* PBXTargetDependency */,
+			);
+			name = DYYSqliteToolTests;
+			productName = DYYSqliteToolTests;
+			productReference = 2F27FA251F1897AE00359321 /* DYYSqliteToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2F659ED61F176A3900B4FCE2 /* DYYSqliteTool */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F659EF91F176A3900B4FCE2 /* Build configuration list for PBXNativeTarget "DYYSqliteTool" */;
@@ -158,6 +239,12 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = dingyangyang;
 				TargetAttributes = {
+					2F27FA241F1897AE00359321 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 7GGDE944PX;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2F659ED61F176A3900B4FCE2;
+					};
 					2F659ED61F176A3900B4FCE2 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 7GGDE944PX;
@@ -186,11 +273,19 @@
 			targets = (
 				2F659ED61F176A3900B4FCE2 /* DYYSqliteTool */,
 				2F659EEF1F176A3900B4FCE2 /* DYYSqliteToolUITests */,
+				2F27FA241F1897AE00359321 /* DYYSqliteToolTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2F27FA231F1897AE00359321 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F659ED51F176A3900B4FCE2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,10 +306,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2F27FA211F1897AE00359321 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F27FA301F1897DF00359321 /* DYYSqliteToolTest.m in Sources */,
+				2F27FA281F1897AE00359321 /* DYYSqliteToolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F659ED31F176A3900B4FCE2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F659F021F176ACE00B4FCE2 /* DYYSqliteTool.m in Sources */,
 				2F659EE21F176A3900B4FCE2 /* ViewController.m in Sources */,
 				2F659EDF1F176A3900B4FCE2 /* AppDelegate.m in Sources */,
 				2F659EDC1F176A3900B4FCE2 /* main.m in Sources */,
@@ -232,6 +337,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2F27FA2B1F1897AE00359321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F659ED61F176A3900B4FCE2 /* DYYSqliteTool */;
+			targetProxy = 2F27FA2A1F1897AE00359321 /* PBXContainerItemProxy */;
+		};
 		2F659EF21F176A3900B4FCE2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2F659ED61F176A3900B4FCE2 /* DYYSqliteTool */;
@@ -259,6 +369,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2F27FA2C1F1897AE00359321 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7GGDE944PX;
+				INFOPLIST_FILE = DYYSqliteToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dingyangyang.DYYSqliteToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DYYSqliteTool.app/DYYSqliteTool";
+			};
+			name = Debug;
+		};
+		2F27FA2D1F1897AE00359321 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7GGDE944PX;
+				INFOPLIST_FILE = DYYSqliteToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dingyangyang.DYYSqliteToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DYYSqliteTool.app/DYYSqliteTool";
+			};
+			name = Release;
+		};
 		2F659EF71F176A3900B4FCE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -400,6 +536,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2F27FA2E1F1897AE00359321 /* Build configuration list for PBXNativeTarget "DYYSqliteToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F27FA2C1F1897AE00359321 /* Debug */,
+				2F27FA2D1F1897AE00359321 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2F659ED21F176A3900B4FCE2 /* Build configuration list for PBXProject "DYYSqliteTool" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -416,6 +560,7 @@
 				2F659EFB1F176A3900B4FCE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F659EFC1F176A3900B4FCE2 /* Build configuration list for PBXNativeTarget "DYYSqliteToolUITests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +569,7 @@
 				2F659EFE1F176A3900B4FCE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
