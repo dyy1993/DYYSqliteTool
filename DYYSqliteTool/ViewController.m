@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 #import "DYYSqliteTool.h"
+#import "DYYModelTool.h"
+#import "stuModel.h"
+#import "DYYSqliteModelTool.h"
+
 @interface ViewController ()
 
 @end
@@ -27,10 +31,12 @@
         NSLog(@"操作失败");
 }
 - (IBAction)query:(id)sender {
-    NSString *sql = @"select * from t_stu";
-    NSMutableArray *resut = [DYYSqliteTool query:sql withUid:nil];
-    
-    NSLog(@"%@",resut);
+//    NSString *sql = @"select * from t_stu";
+//    NSMutableArray *resut = [DYYSqliteTool query:sql withUid:nil];
+//    
+//    NSLog(@"%@",resut);
+    [DYYSqliteModelTool saveModel:[stuModel class] withUid:nil];
+
 }
 
 

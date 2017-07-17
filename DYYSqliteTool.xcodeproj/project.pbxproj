@@ -12,6 +12,9 @@
 		2F27FA331F18A4E400359321 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F27FA321F18A4E400359321 /* libsqlite3.0.tbd */; };
 		2F27FA351F18A4FC00359321 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F27FA341F18A4FC00359321 /* libsqlite3.tbd */; };
 		2F27FA361F18A52B00359321 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F27FA321F18A4E400359321 /* libsqlite3.0.tbd */; };
+		2F27FA391F18D41100359321 /* DYYSqliteModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27FA381F18D41100359321 /* DYYSqliteModelTool.m */; };
+		2F27FA3C1F18D52C00359321 /* DYYModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27FA3B1F18D52C00359321 /* DYYModelTool.m */; };
+		2F2E6DFC1F1C562100EAB752 /* stuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E6DFB1F1C562100EAB752 /* stuModel.m */; };
 		2F659EDC1F176A3900B4FCE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EDB1F176A3900B4FCE2 /* main.m */; };
 		2F659EDF1F176A3900B4FCE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EDE1F176A3900B4FCE2 /* AppDelegate.m */; };
 		2F659EE21F176A3900B4FCE2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EE11F176A3900B4FCE2 /* ViewController.m */; };
@@ -46,6 +49,13 @@
 		2F27FA2F1F1897DF00359321 /* DYYSqliteToolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYYSqliteToolTest.m; sourceTree = "<group>"; };
 		2F27FA321F18A4E400359321 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		2F27FA341F18A4FC00359321 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		2F27FA371F18D41100359321 /* DYYSqliteModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYYSqliteModelTool.h; sourceTree = "<group>"; };
+		2F27FA381F18D41100359321 /* DYYSqliteModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYYSqliteModelTool.m; sourceTree = "<group>"; };
+		2F27FA3A1F18D52C00359321 /* DYYModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYYModelTool.h; sourceTree = "<group>"; };
+		2F27FA3B1F18D52C00359321 /* DYYModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYYModelTool.m; sourceTree = "<group>"; };
+		2F2E6DFA1F1C562100EAB752 /* stuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stuModel.h; sourceTree = "<group>"; };
+		2F2E6DFB1F1C562100EAB752 /* stuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stuModel.m; sourceTree = "<group>"; };
+		2F2E6DFD1F1C5FED00EAB752 /* DYYModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYYModelProtocol.h; sourceTree = "<group>"; };
 		2F659ED71F176A3900B4FCE2 /* DYYSqliteTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DYYSqliteTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F659EDB1F176A3900B4FCE2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F659EDD1F176A3900B4FCE2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -144,6 +154,8 @@
 				2F659EE81F176A3900B4FCE2 /* LaunchScreen.storyboard */,
 				2F659EEB1F176A3900B4FCE2 /* Info.plist */,
 				2F659EDA1F176A3900B4FCE2 /* Supporting Files */,
+				2F2E6DFA1F1C562100EAB752 /* stuModel.h */,
+				2F2E6DFB1F1C562100EAB752 /* stuModel.m */,
 			);
 			path = DYYSqliteTool;
 			sourceTree = "<group>";
@@ -170,6 +182,11 @@
 			children = (
 				2F659F001F176ACE00B4FCE2 /* DYYSqliteTool.h */,
 				2F659F011F176ACE00B4FCE2 /* DYYSqliteTool.m */,
+				2F27FA371F18D41100359321 /* DYYSqliteModelTool.h */,
+				2F27FA381F18D41100359321 /* DYYSqliteModelTool.m */,
+				2F27FA3A1F18D52C00359321 /* DYYModelTool.h */,
+				2F27FA3B1F18D52C00359321 /* DYYModelTool.m */,
+				2F2E6DFD1F1C5FED00EAB752 /* DYYModelProtocol.h */,
 			);
 			path = DYYSqliteTool;
 			sourceTree = "<group>";
@@ -320,6 +337,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F659F021F176ACE00B4FCE2 /* DYYSqliteTool.m in Sources */,
+				2F2E6DFC1F1C562100EAB752 /* stuModel.m in Sources */,
+				2F27FA391F18D41100359321 /* DYYSqliteModelTool.m in Sources */,
+				2F27FA3C1F18D52C00359321 /* DYYModelTool.m in Sources */,
 				2F659EE21F176A3900B4FCE2 /* ViewController.m in Sources */,
 				2F659EDF1F176A3900B4FCE2 /* AppDelegate.m in Sources */,
 				2F659EDC1F176A3900B4FCE2 /* main.m in Sources */,
@@ -543,6 +563,7 @@
 				2F27FA2D1F1897AE00359321 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F659ED21F176A3900B4FCE2 /* Build configuration list for PBXProject "DYYSqliteTool" */ = {
 			isa = XCConfigurationList;
