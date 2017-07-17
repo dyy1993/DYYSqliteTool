@@ -9,7 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface DYYSqliteTool : NSObject
+
+/**
+ 执行sql语句
+ */
 + (BOOL)deal:(NSString *)sql withUid:(NSString *)uid;
+
+/**
+ 查询sql语句
+ */
 + (NSMutableArray <NSMutableDictionary *> *)query:(NSString *)sql withUid:(NSString *)uid;
 
 @end

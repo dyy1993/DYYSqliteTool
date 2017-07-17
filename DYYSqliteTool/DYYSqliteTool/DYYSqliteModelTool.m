@@ -10,6 +10,7 @@
 #import "DYYModelTool.h"
 #import "DYYModelProtocol.h"
 #import "DYYSqliteTool.h"
+#import "DYYTableTool.h"
 @implementation DYYSqliteModelTool
 + (BOOL)saveModel:(Class)cls withUid:(NSString *)uid{
 
@@ -26,5 +27,12 @@
     
     return [DYYSqliteTool deal:sql withUid:uid];
     
+}
++ (BOOL)isTableRequiredUpdate:(Class)cls uid:(NSString *)uid{
+
+    NSArray *modelNames = [DYYModelTool classSortedIvarNames:cls];
+    NSArray *tableNames = [DYYTableTool tableSortedColumnNames:cls uid:uid];
+    return ![modelNames isEqualToArray:tableNames];
+
 }
 @end

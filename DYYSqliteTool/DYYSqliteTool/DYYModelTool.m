@@ -61,7 +61,15 @@
     return [strArray componentsJoinedByString:@","];
     
 }
++ (NSArray *)classSortedIvarNames:(Class)cls{
 
+    NSDictionary *dict = [self classIvarNameTypeDic:cls];
+    NSArray *keys = dict.allKeys;
+    NSArray *names = [keys sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj1 compare:obj2];
+    }];
+    return names;
+}
 #pragma mark - 私有的方法
 + (NSDictionary *)ocTypeToSqliteTypeDic {
     return @{

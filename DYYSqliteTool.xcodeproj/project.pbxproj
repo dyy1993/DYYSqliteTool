@@ -15,6 +15,7 @@
 		2F27FA391F18D41100359321 /* DYYSqliteModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27FA381F18D41100359321 /* DYYSqliteModelTool.m */; };
 		2F27FA3C1F18D52C00359321 /* DYYModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27FA3B1F18D52C00359321 /* DYYModelTool.m */; };
 		2F2E6DFC1F1C562100EAB752 /* stuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E6DFB1F1C562100EAB752 /* stuModel.m */; };
+		2F2E6E001F1C934800EAB752 /* DYYTableTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E6DFF1F1C934800EAB752 /* DYYTableTool.m */; };
 		2F659EDC1F176A3900B4FCE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EDB1F176A3900B4FCE2 /* main.m */; };
 		2F659EDF1F176A3900B4FCE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EDE1F176A3900B4FCE2 /* AppDelegate.m */; };
 		2F659EE21F176A3900B4FCE2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F659EE11F176A3900B4FCE2 /* ViewController.m */; };
@@ -56,6 +57,8 @@
 		2F2E6DFA1F1C562100EAB752 /* stuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stuModel.h; sourceTree = "<group>"; };
 		2F2E6DFB1F1C562100EAB752 /* stuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stuModel.m; sourceTree = "<group>"; };
 		2F2E6DFD1F1C5FED00EAB752 /* DYYModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYYModelProtocol.h; sourceTree = "<group>"; };
+		2F2E6DFE1F1C934800EAB752 /* DYYTableTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYYTableTool.h; sourceTree = "<group>"; };
+		2F2E6DFF1F1C934800EAB752 /* DYYTableTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYYTableTool.m; sourceTree = "<group>"; };
 		2F659ED71F176A3900B4FCE2 /* DYYSqliteTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DYYSqliteTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F659EDB1F176A3900B4FCE2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F659EDD1F176A3900B4FCE2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				2F27FA3A1F18D52C00359321 /* DYYModelTool.h */,
 				2F27FA3B1F18D52C00359321 /* DYYModelTool.m */,
 				2F2E6DFD1F1C5FED00EAB752 /* DYYModelProtocol.h */,
+				2F2E6DFE1F1C934800EAB752 /* DYYTableTool.h */,
+				2F2E6DFF1F1C934800EAB752 /* DYYTableTool.m */,
 			);
 			path = DYYSqliteTool;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				2F27FA391F18D41100359321 /* DYYSqliteModelTool.m in Sources */,
 				2F27FA3C1F18D52C00359321 /* DYYModelTool.m in Sources */,
 				2F659EE21F176A3900B4FCE2 /* ViewController.m in Sources */,
+				2F2E6E001F1C934800EAB752 /* DYYTableTool.m in Sources */,
 				2F659EDF1F176A3900B4FCE2 /* AppDelegate.m in Sources */,
 				2F659EDC1F176A3900B4FCE2 /* main.m in Sources */,
 			);

@@ -26,4 +26,8 @@
  将成员变量名和对应sqlite类型拼接成string
  */
 + (NSString *)columnNamesAndTypesStr:(Class)cls;
+/**
+ 返回排序好的成员变量名称
+ */
++ (NSArray *)classSortedIvarNames:(Class)cls;
 @end

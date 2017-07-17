@@ -11,7 +11,7 @@
 #import "DYYModelTool.h"
 #import "stuModel.h"
 #import "DYYSqliteModelTool.h"
-
+#import "DYYTableTool.h"
 @interface ViewController ()
 
 @end
@@ -35,8 +35,8 @@
 //    NSMutableArray *resut = [DYYSqliteTool query:sql withUid:nil];
 //    
 //    NSLog(@"%@",resut);
-    [DYYSqliteModelTool saveModel:[stuModel class] withUid:nil];
-
+//    [DYYSqliteModelTool saveModel:[stuModel class] withUid:nil];
+    [DYYSqliteModelTool isTableRequiredUpdate:[stuModel class] uid:nil];
 }
 
 
