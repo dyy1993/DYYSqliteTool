@@ -13,11 +13,13 @@
 /**
  执行sql语句
  */
-+ (BOOL)deal:(NSString *)sql withUid:(NSString *)uid;
++ (BOOL)deal:(NSString *)sql uid:(NSString *)uid;
 
 /**
  查询sql语句
  */
-+ (NSMutableArray <NSMutableDictionary *> *)query:(NSString *)sql withUid:(NSString *)uid;
++ (NSMutableArray <NSMutableDictionary *> *)query:(NSString *)sql uid:(NSString *)uid;
+
++ (BOOL)dealSqls:(NSArray <NSString *>*)sqls uid:(NSString *)uid;
 
 @end

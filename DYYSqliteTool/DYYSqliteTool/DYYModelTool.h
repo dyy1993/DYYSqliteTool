@@ -14,6 +14,8 @@
  获取表明
  */
 + (NSString *)tableName:(Class)cls;
++ (NSString *)tmpTableName:(Class)cls;
+
 /**
  根据类名获取成员变量名和对应的类型
  */

@@ -15,7 +15,7 @@
     NSString *tableName = [DYYModelTool tableName:cls];
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM sqlite_master WHERE type = \"table\" AND name = \"%@\"",tableName];
     
-   NSDictionary *tableDic = [[DYYSqliteTool query:sql withUid:uid] firstObject];
+   NSDictionary *tableDic = [[DYYSqliteTool query:sql uid:uid] firstObject];
     // CREATE TABLE stuModel(age integer,score real,name text,score3 real,primary key (name))
     NSString *createSql = [tableDic[@"sql"] lowercaseString];
     if (createSql.length == 0) {

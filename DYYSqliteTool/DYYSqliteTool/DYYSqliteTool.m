@@ -8,11 +8,12 @@
 
 #import "DYYSqliteTool.h"
 #import "sqlite3.h"
-#define kCachePath NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject
+//#define kCachePath NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject
+#define kCachePath @"/Users/yang/Desktop/carrier"
 @implementation DYYSqliteTool
 sqlite3 *ppDb = nil;
 
-+ (BOOL)deal:(NSString *)sql withUid:(NSString *)uid{
++ (BOOL)deal:(NSString *)sql uid:(NSString *)uid{
 
  
     if (![self open:uid]) {
@@ -27,7 +28,7 @@ sqlite3 *ppDb = nil;
     return result;
 }
 
-+ (NSMutableArray <NSMutableDictionary *> *)query:(NSString *)sql withUid:(NSString *)uid{
++ (NSMutableArray <NSMutableDictionary *> *)query:(NSString *)sql uid:(NSString *)uid{
 
     if (![self open:uid]) {
         NSLog(@"打开数据库失败");
@@ -83,6 +84,34 @@ sqlite3 *ppDb = nil;
     [self close];
     return dictArray;
 }
+
++ (BOOL)dealSqls:(NSArray <NSString *>*)sqls uid:(NSString *)uid {
+    
+    [self beginTransaction:uid];
+    
+    for (NSString *sql in sqls) {
+        BOOL result = [self deal:sql uid:uid];
+        if (result == NO) {
+            [self rollBackTransaction:uid];
+            return NO;
+        }
+    }
+    
+    [self commitTransaction:uid];
+    return YES;
+}
+
++ (void)beginTransaction:(NSString *)uid {
+    [self deal:@"begin transaction" uid:uid];
+}
+
++ (void)commitTransaction:(NSString *)uid {
+    [self deal:@"commit transaction" uid:uid];
+}
++ (void)rollBackTransaction:(NSString *)uid {
+    [self deal:@"rollback transaction" uid:uid];
+}
+
 
 + (BOOL)open:(NSString *)uid{
 

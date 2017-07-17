@@ -13,8 +13,9 @@
 /**
  保存模型到数据库
  */
-+ (BOOL)saveModel:(Class)cls withUid:(NSString *)uid;
++ (BOOL)createTable:(Class)cls withUid:(NSString *)uid;
 
 + (BOOL)isTableRequiredUpdate:(Class)cls uid:(NSString *)uid;
++ (BOOL)updateTable:(Class)cls uid:(NSString *)uid;
 
 @end
