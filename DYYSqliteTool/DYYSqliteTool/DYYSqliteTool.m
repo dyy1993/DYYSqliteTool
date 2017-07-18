@@ -8,8 +8,7 @@
 
 #import "DYYSqliteTool.h"
 #import "sqlite3.h"
-//#define kCachePath NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject
-#define kCachePath @"/Users/yang/Desktop/carrier"
+#define kCachePath NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject
 @implementation DYYSqliteTool
 sqlite3 *ppDb = nil;
 
