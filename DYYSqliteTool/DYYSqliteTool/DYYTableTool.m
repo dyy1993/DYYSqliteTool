@@ -48,4 +48,13 @@
     
     return nameArray;
 }
++ (BOOL)isTableExists:(Class)cls uid:(NSString *)uid {
+    
+    NSString *tableName = [DYYModelTool tableName:cls];
+    NSString *queryCreateSqlStr = [NSString stringWithFormat:@"select sql from sqlite_master where type = 'table' and name = '%@'", tableName];
+    
+    NSMutableArray *result = [DYYSqliteTool query:queryCreateSqlStr uid:uid];
+    
+    return result.count > 0;
+}
 @end

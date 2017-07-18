@@ -11,9 +11,12 @@
 @interface DYYModelTool : NSObject
 
 /**
- 获取表明
+ 获取表名
  */
 + (NSString *)tableName:(Class)cls;
+/**
+ 获取临时表名
+ */
 + (NSString *)tmpTableName:(Class)cls;
 
 /**

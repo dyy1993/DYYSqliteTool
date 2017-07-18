@@ -14,4 +14,7 @@
  查询class表中排序好的列名
  */
 + (NSArray *)tableSortedColumnNames:(Class)cls uid:(NSString *)uid;
+
++ (BOOL)isTableExists:(Class)cls uid:(NSString *)uid;
+
 @end

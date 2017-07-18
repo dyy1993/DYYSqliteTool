@@ -12,7 +12,7 @@
 #import "DYYSqliteTool.h"
 #import "DYYTableTool.h"
 @implementation DYYSqliteModelTool
-+ (BOOL)createTable:(Class)cls withUid:(NSString *)uid{
++ (BOOL)createTable:(Class)cls uid:(NSString *)uid{
 
     //表名 键名 类型 
     NSString *tableName = [DYYModelTool tableName:cls];
@@ -38,32 +38,42 @@
 + (BOOL)updateTable:(Class)cls uid:(NSString *)uid {
     
     
-    // 1. 创建一个拥有正确结构的临时表
-    // 1.1 获取表格名称
     NSString *tmpTableName = [DYYModelTool tmpTableName:cls];
     NSString *tableName = [DYYModelTool tableName:cls];
     
     if (![cls respondsToSelector:@selector(primaryKey)]) {
-        NSLog(@"如果想要操作这个模型, 必须要实现+ (NSString *)primaryKey;这个方法, 来告诉我主键信息");
+        NSLog(@"必须实现primaryKey，返回主键名");
         return NO;
     }
     NSMutableArray *execSqls = [NSMutableArray array];
     NSString *primaryKey = [cls primaryKey];
     NSString *createTableSql = [NSString stringWithFormat:@"create table if not exists %@(%@, primary key(%@));", tmpTableName, [DYYModelTool columnNamesAndTypesStr:cls], primaryKey];
     [execSqls addObject:createTableSql];
-    // 2. 根据主键, 插入数据
-    // insert into xmgstu_tmp(stuNum) select stuNum from xmgstu;
+    // 根据主键, 插入数据
     NSString *insertPrimaryKeyData = [NSString stringWithFormat:@"insert into %@(%@) select %@ from %@;", tmpTableName, primaryKey, primaryKey, tableName];
     [execSqls addObject:insertPrimaryKeyData];
-    // 3. 根据主键, 把所有的数据更新到新表里面
+    //根据主键, 把所有的数据更新到新表里面
     NSArray *oldNames = [DYYTableTool tableSortedColumnNames:cls uid:uid];
     NSArray *newNames = [DYYModelTool classSortedIvarNames:cls];
     
+    //获取更名字典
+    NSDictionary *newNameToOldNameDic = @{};
+    if ([cls respondsToSelector:@selector(newNameToOldNameDic)]) {
+        newNameToOldNameDic = [cls newNameToOldNameDic];
+    }
+    
     for (NSString *columnName in newNames) {
-        if (![oldNames containsObject:columnName]) {
+        NSString *oldName = columnName;
+        // 找映射的旧的字段名称
+        if ([newNameToOldNameDic[columnName] length] != 0) {
+            oldName = newNameToOldNameDic[columnName];
+        }
+        // 如果老表包含了新的列明, 应该从老表更新到临时表格里面
+        if ((![oldNames containsObject:columnName] && ![oldNames containsObject:oldName]) || [columnName isEqualToString:primaryKey]) {
             continue;
         }
-        NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = (select %@ from %@ where %@.%@ = %@.%@)", tmpTableName, columnName, columnName, tableName, tmpTableName, primaryKey, tableName, primaryKey];
+        // update 临时表 set 新字段名称 = (select 旧字段名 from 旧表 where 临时表.主键 = 旧表.主键)
+        NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = (select %@ from %@ where %@.%@ = %@.%@)", tmpTableName, columnName, oldName, tableName, tmpTableName, primaryKey, tableName, primaryKey];
         [execSqls addObject:updateSql];
     }
     
@@ -77,5 +87,124 @@
     return [DYYSqliteTool dealSqls:execSqls uid:uid];
     
 }
+
++ (BOOL)saveOrUpdateModel:(id)model uid:(NSString *)uid {
+    
+    // 保存一个模型
+    Class cls = [model class];
+    //判断表格是否存在, 不存在, 则创建
+    if (![DYYTableTool isTableExists:cls uid:uid]) {
+        [self createTable:cls uid:uid];
+    }
+    //检测表格是否需要更新, 需要, 更新
+    if ([self isTableRequiredUpdate:cls uid:uid]) {
+        [self updateTable:cls uid:uid];
+    }
+    
+    //判断记录是否存在, 主键
+    NSString *tableName = [DYYModelTool tableName:cls];
+    
+    if (![cls respondsToSelector:@selector(primaryKey)]) {
+        NSLog(@"必须实现primaryKey，返回主键名");
+        return NO;
+    }
+    NSString *primaryKey = [cls primaryKey];
+    id primaryValue = [model valueForKeyPath:primaryKey];
+    
+    NSString *checkSql = [NSString stringWithFormat:@"select * from %@ where %@ = '%@'", tableName, primaryKey, primaryValue];
+    NSArray *result = [DYYSqliteTool query:checkSql uid:uid];
+    
+    
+    // 获取字段数组
+    NSArray *columnNames = [DYYModelTool classIvarNameTypeDic:cls].allKeys;
+    
+    // 获取值数组
+    NSMutableArray *values = [NSMutableArray array];
+    for (NSString *columnName in columnNames) {
+        id value = [model valueForKeyPath:columnName];
+        [values addObject:value];
+    }
+    
+    NSInteger count = columnNames.count;
+    NSMutableArray *setValueArray = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        NSString *name = columnNames[i];
+        id value = values[i];
+        NSString *setStr = [NSString stringWithFormat:@"%@='%@'", name, value];
+        [setValueArray addObject:setStr];
+    }
+    
+    // 更新
+    // 字段名称, 字段值
+    // update 表名 set 字段1=字段1值,字段2=字段2的值... where 主键 = '主键值'
+    NSString *execSql = @"";
+    if (result.count > 0) {
+        execSql = [NSString stringWithFormat:@"update %@ set %@  where %@ = '%@'", tableName, [setValueArray componentsJoinedByString:@","], primaryKey, primaryValue];
+        
+        
+    }else {
+        // insert into 表名(字段1, 字段2, 字段3) values ('值1', '值2', '值3')
+        execSql = [NSString stringWithFormat:@"insert into %@(%@) values('%@')", tableName, [columnNames componentsJoinedByString:@","], [values componentsJoinedByString:@"','"]];
+    }
+    
+    
+    return [DYYSqliteTool deal:execSql uid:uid];
+}
+
++ (BOOL)deleteModel:(id)model uid:(NSString *)uid {
+    
+    Class cls = [model class];
+    NSString *tableName = [DYYModelTool tableName:cls];
+    if (![cls respondsToSelector:@selector(primaryKey)]) {
+        NSLog(@"必须实现primaryKey，返回主键名");
+        return NO;
+    }
+    NSString *primaryKey = [cls primaryKey];
+    id primaryValue = [model valueForKeyPath:primaryKey];
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ = '%@'", tableName, primaryKey, primaryValue];
+    
+    return [DYYSqliteTool deal:deleteSql uid:uid];
+    
+}
+
+
++ (BOOL)deleteModel:(Class)cls whereStr:(NSString *)whereStr uid:(NSString *)uid {
+    
+    NSString *tableName = [DYYModelTool tableName:cls];
+    
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@", tableName];
+    if (whereStr.length > 0) {
+        deleteSql = [deleteSql stringByAppendingFormat:@" where %@", whereStr];
+    }
+    
+    return [DYYSqliteTool deal:deleteSql uid:uid];
+    
+}
+
+
+
++ (BOOL)deleteModel:(Class)cls columnName:(NSString *)name relation:(ColumnNameToValueRelationType)relation value:(id)value uid:(NSString *)uid {
+    
+    NSString *tableName = [DYYModelTool tableName:cls];
+    
+    
+    
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ %@ '%@'", tableName, name, self.ColumnNameToValueRelationTypeDic[@(relation)], value];
+    
+    
+    return [DYYSqliteTool deal:deleteSql uid:uid];
+}
+
+
++ (NSDictionary *)ColumnNameToValueRelationTypeDic {
+    return @{
+             @(ColumnNameToValueRelationTypeMore):@">",
+             @(ColumnNameToValueRelationTypeLess):@"<",
+             @(ColumnNameToValueRelationTypeEqual):@"=",
+             @(ColumnNameToValueRelationTypeMoreEqual):@">=",
+             @(ColumnNameToValueRelationTypeLessEqual):@"<="
+             };
+}
+
 
 @end

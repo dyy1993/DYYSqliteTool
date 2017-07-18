@@ -14,7 +14,7 @@
 @property(nonatomic, assign) NSInteger age;
 @property(nonatomic, assign) CGFloat score;
 @property(nonatomic, assign) CGFloat score2;
-@property(nonatomic, assign) CGFloat score3;
+@property(nonatomic, assign) CGFloat score4;
 
 
 @end

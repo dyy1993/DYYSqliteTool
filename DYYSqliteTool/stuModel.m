@@ -17,4 +17,8 @@
 
     return @[@"score2"];
 }
++(NSDictionary *)newNameToOldNameDic{
+
+    return @{@"score4" : @"score3"};
+}
 @end

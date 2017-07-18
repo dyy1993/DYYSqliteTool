@@ -20,4 +20,11 @@
  忽略模型中字段
  */
 + (NSArray *)ingnoreColumnNames;
+
+/**
+ 新字段名称-> 旧的字段名称的映射表格
+ 
+ @return 映射表格
+ */
++ (NSDictionary *)newNameToOldNameDic;
 @end

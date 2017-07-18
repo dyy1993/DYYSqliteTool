@@ -20,6 +20,13 @@
  */
 + (NSMutableArray <NSMutableDictionary *> *)query:(NSString *)sql uid:(NSString *)uid;
 
+/**
+ 执行sql语句组
+
+ @param sqls sql语句组
+ @param uid 用户标识
+ @return 是否成功执行
+ */
 + (BOOL)dealSqls:(NSArray <NSString *>*)sqls uid:(NSString *)uid;
 
 @end
