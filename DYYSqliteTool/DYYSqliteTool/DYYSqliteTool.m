@@ -87,17 +87,29 @@ sqlite3 *ppDb = nil;
 
 + (BOOL)dealSqls:(NSArray <NSString *>*)sqls uid:(NSString *)uid {
     
-    [self beginTransaction:uid];
     
+    // 准备语句
+    if (![self open:uid]) {
+        NSLog(@"打开数据库失败, 请重新尝试");
+        return NO;
+    }
+    NSString *begin = @"begin transaction";
+    sqlite3_exec(ppDb, begin.UTF8String, nil, nil, nil);
+    
+    //执行事务, 如果有一条执行失败, 则终止执行并执行回滚操作
     for (NSString *sql in sqls) {
-        BOOL result = [self deal:sql uid:uid];
+        BOOL result = sqlite3_exec(ppDb, sql.UTF8String, nil, nil, nil) == SQLITE_OK;
         if (result == NO) {
-            [self rollBackTransaction:uid];
+            NSString *rollBack = @"rollback transaction";
+            sqlite3_exec(ppDb, rollBack.UTF8String, nil, nil, nil);
+            [self close];
             return NO;
         }
     }
-    
-    [self commitTransaction:uid];
+    // 提交事务
+    NSString *commit = @"commit transaction";
+    sqlite3_exec(ppDb, commit.UTF8String, nil, nil, nil);
+    [self close];
     return YES;
 }
 

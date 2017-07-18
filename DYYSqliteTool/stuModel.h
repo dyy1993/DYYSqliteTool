@@ -16,5 +16,14 @@
 @property(nonatomic, assign) CGFloat score2;
 @property(nonatomic, assign) CGFloat score4;
 
+@property(nonatomic, strong) NSArray *scores;
+@property(nonatomic, strong) NSDictionary *dict;
+
+
+@property(nonatomic, assign) CGFloat score5;
+
+
+
+
 
 @end

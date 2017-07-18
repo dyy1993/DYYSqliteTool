@@ -98,7 +98,12 @@
     }
     //检测表格是否需要更新, 需要, 更新
     if ([self isTableRequiredUpdate:cls uid:uid]) {
-        [self updateTable:cls uid:uid];
+        if ([self updateTable:cls uid:uid]) {
+            NSLog(@"更新成功");
+        }else{
+         NSLog(@"更新失败");
+            return NO;
+        }
     }
     
     //判断记录是否存在, 主键
@@ -122,6 +127,13 @@
     NSMutableArray *values = [NSMutableArray array];
     for (NSString *columnName in columnNames) {
         id value = [model valueForKeyPath:columnName];
+        
+        if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) {
+            
+            NSData *data = [NSJSONSerialization dataWithJSONObject:value options:NSJSONWritingPrettyPrinted error:nil];
+            
+            value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
         [values addObject:value];
     }
     
@@ -134,8 +146,6 @@
         [setValueArray addObject:setStr];
     }
     
-    // 更新
-    // 字段名称, 字段值
     // update 表名 set 字段1=字段1值,字段2=字段2的值... where 主键 = '主键值'
     NSString *execSql = @"";
     if (result.count > 0) {
@@ -195,7 +205,69 @@
     return [DYYSqliteTool deal:deleteSql uid:uid];
 }
 
++ (NSArray *)queryAllModels:(Class)cls uid:(NSString *)uid {
+    
+    NSString *tableName = [DYYModelTool tableName:cls];
+ 
+    NSString *sql = [NSString stringWithFormat:@"select * from %@", tableName];
+    
+    NSArray <NSDictionary *>*results = [DYYSqliteTool query:sql uid:uid];
+    
+    return [self parseResults:results withClass:cls];;
+    
+}
 
++ (NSArray *)queryModels:(Class)cls columnName:(NSString *)name relation:(ColumnNameToValueRelationType)relation value:(id)value uid:(NSString *)uid {
+    
+    NSString *tableName = [DYYModelTool tableName:cls];
+    
+    NSString *sql = [NSString stringWithFormat:@"select * from %@ where %@ %@ '%@' ", tableName, name, self.ColumnNameToValueRelationTypeDic[@(relation)], value];
+    
+    NSArray <NSDictionary *>*results = [DYYSqliteTool query:sql uid:uid];
+    
+    return [self parseResults:results withClass:cls];
+}
+
++ (NSArray *)queryModels:(Class)cls WithSql:(NSString *)sql uid:(NSString *)uid {
+    
+    NSArray <NSDictionary *>*results = [DYYSqliteTool query:sql uid:uid];
+    
+    return [self parseResults:results withClass:cls];
+    
+}
+
+
++ (NSArray *)parseResults:(NSArray <NSDictionary *>*)results withClass:(Class)cls {
+    
+    NSMutableArray *models = [NSMutableArray array];
+    
+    NSDictionary *nameTypeDic = [DYYModelTool classIvarNameTypeDic:cls];
+    
+    for (NSDictionary *modelDic in results) {
+        id model = [[cls alloc] init];
+        [models addObject:model];
+        
+        [modelDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            
+            NSString *type = nameTypeDic[key];
+            id resultValue = obj;
+            if ([type isEqualToString:@"NSArray"] || [type isEqualToString:@"NSDictionary"]) {
+                
+                NSData *data = [obj dataUsingEncoding:NSUTF8StringEncoding];
+                resultValue = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                
+            }else if ([type isEqualToString:@"NSMutableArray"] || [type isEqualToString:@"NSMutableDictionary"]) {
+                NSData *data = [obj dataUsingEncoding:NSUTF8StringEncoding];
+                resultValue = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            }
+            
+            [model setValue:resultValue forKeyPath:key];
+            
+        }];
+    }
+    
+    return models;
+}
 + (NSDictionary *)ColumnNameToValueRelationTypeDic {
     return @{
              @(ColumnNameToValueRelationTypeMore):@">",

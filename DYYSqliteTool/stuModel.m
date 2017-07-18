@@ -15,10 +15,7 @@
 }
 + (NSArray *)ingnoreColumnNames{
 
-    return @[@"score2"];
+    return @[@"score2,score4"];
 }
-+(NSDictionary *)newNameToOldNameDic{
 
-    return @{@"score4" : @"score3"};
-}
 @end
